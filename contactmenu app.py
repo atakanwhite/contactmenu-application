@@ -67,7 +67,7 @@ def search():
     cevirilen = ast.literal_eval(okunan)
     aranan = input("Name?")
     for a in cevirilen:
-        if a["adi"]==aranan: print(a)
+        if a["name"]==aranan: print(a)
 def edit():
     with open("contactmenu.txt", "r") as dosya:
         okunan = dosya.read()
@@ -77,22 +77,22 @@ def edit():
     dosya.close()
     with open("contactmenu.txt","w") as dosya:
         for a in cevirilen:
-            if a["adi"]==aranan:
+            if a["name"]==aranan:
                 print(a)
                 yeniAd = input("Name: ")
                 yeniNo = input("Number: ")
-                a["adi"]=yeniAd
+                a["name"]=yeniAd
                 a["num"]=yeniNo
             dosya.write(f"{str(a)},")        
 def delete():
-    with open("rehber.txt", "r") as dosya:
+    with open("contactmenu.txt", "r") as dosya:
         okunan = dosya.read()
     print("╠════════════╣ DELETE ╠════════════╣")
     cevirilen = ast.literal_eval(okunan)
     aranan = input("Who do you want to delete? ")
     dosya.close()
-    with open("rehber.txt","w") as dosya:
+    with open("contactmenu.txt","w") as dosya1:
         for a in cevirilen:
-            if a["adi"]!=aranan:
-                dosya.write(f"{str(a)},")
+            if a["name"]!=aranan:
+                dosya1.write(f"{str(a)},")
 menu()
